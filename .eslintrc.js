@@ -18,7 +18,7 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
-    "comma-dangle": ["error", "never"], //是否允许对象中出现结尾逗号
+    "comma-dangle": ["off", "never"], //是否允许对象中出现结尾逗号
     "no-cond-assign": 0, //条件语句的条件中不允许出现赋值运算符
     "no-console": 0, //不允许出现console语句
     "no-constant-condition": 0, //条件语句的条件中不允许出现恒定不变的量

@@ -1,9 +1,16 @@
 <template>
     <div class="real_time_event">
         <div class="real_time_event_content">
-            <p class="real_time_title">{{title}}</p>
+            <p class="real_time_title">{{realTime.title}}</p>
             <ul class="real_time_item">
-                <li v-for="item in realTimelist"><a>{{item.name}}</a></li>
+                <li><span>事件名称</span><span>{{realTime.name}}</span></li>
+                <li v-for="(item,index) in realTime.realTimelist" :style="{background: index % 2 === 0 ? '#091629': '#030917'}">
+                    <span><a>{{item.name}}</a></span>
+                    <span v-if="item.status === '正常'" style="color: #10d904">{{item.status}}</span>
+                    <span v-if="item.status === '故障'" style="color: #df6e08">{{item.status}}</span>
+                    <span v-if="item.status === '警报'" style="color: #f10102">{{item.status}}</span>
+                    <span v-if="realTime.event">{{item.status}}</span>
+                </li>
             </ul>
         </div>
     </div>
@@ -13,7 +20,7 @@
     export default {
         name: "real-time-event",
         components: {},
-        props: ['title', 'realTimelist'],
+        props: ['realTime'],
         data() {
             return {}
         },
@@ -25,45 +32,5 @@
 </script>
 
 <style lang="less" type="text/less" scoped>
-    .real_time_event{
-        width: 100%;
-        height: 501px;
-        background: url("../../../image/main_right.png") no-repeat;
-        background-size: 100% 100%;
-        position: relative;
-        .real_time_event_content{
-            width: 15rem;
-            height: 420px;
-            position: absolute;
-            top: 50px;
-            left: 1rem;
-            .real_time_title{
-                padding-left: 1rem;
-                font-size: 16px;
-                color: #d7d122;
-                width: 6rem;
-                border-right: 3px solid #d7d122;
-            }
-            .real_time_item{
-                margin-top: 15px;
-                width: 100%;
-                overflow: auto;
-                >li{
-                    width: 13rem;
-                    height: 24px;
-                    line-height: 24px;
-                    font-size: 14px;
-                    text-decoration: underline;
-                    color: #4dbfe8;
-                    background: #38416c;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    padding: 0 1rem;
-                    cursor: pointer;
-                    margin-bottom: 5px;
-                }
-            }
-        }
-    }
+    @import "realTimeEvent";
 </style>

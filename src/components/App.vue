@@ -9,7 +9,6 @@
         },
         data() {
             return {
-
             }
         },
         mounted() {
@@ -18,7 +17,6 @@
             });
         },
         methods: {
-
         }
     }
 </script>
